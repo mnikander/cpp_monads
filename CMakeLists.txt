@@ -13,5 +13,6 @@ include_directories(${GTEST_INCLUDE_DIRS})
 add_executable(unit_tests ${SOURCES}
                           test/main.cpp
                           test/test_maybe.cpp
+                          test/test_result.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)
