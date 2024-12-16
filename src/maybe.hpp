@@ -1,4 +1,4 @@
-//! \brief definition of the maybe Monad, i.e. type definition, unit function, and bind
+// Definition of the Monad, i.e. type definition, unit function, and bind
 
 #pragma once
 
@@ -11,17 +11,17 @@ template <typename T>
 using Maybe = std::optional<T>;
 
 // #2 'unit' function which takes a value and wraps it into Maybe
-// Just :: a -> (M a)
+// just :: T -> (Maybe T)
 template <typename T>
-constexpr Maybe<T> Just(T const& value)
+constexpr Maybe<T> just(T const& value)
 {
     return Maybe<T>(value);
 }
 
-constexpr auto Nothing = std::nullopt;
+constexpr auto nothing = std::nullopt;
 
 // #3 bind operator
-// (>>=) :: (M a) (a -> M b) -> (M b)
+// (>>=) :: (Maybe T) -> (T -> Maybe U) -> (Maybe U)
 template <typename T, typename F>
 std::optional<T> operator>>=(Maybe<T> const& ma, F f)
 {
@@ -31,7 +31,7 @@ std::optional<T> operator>>=(Maybe<T> const& ma, F f)
     }
     else
     {
-        return Nothing;
+        return nothing;
     }
 }
 

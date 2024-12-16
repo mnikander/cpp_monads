@@ -4,7 +4,7 @@
 
 TEST(maybe, nothing)
 {
-    monads::Maybe<std::string> const maybe = monads::Nothing;
+    monads::Maybe<std::string> const maybe = monads::nothing;
 
     EXPECT_FALSE(maybe.has_value());
 }
@@ -13,7 +13,7 @@ TEST(maybe, just)
 {
     std::string const text{"hello world"};
 
-    auto const maybe = monads::Just(text);
+    auto const maybe = monads::just(text);
 
     ASSERT_TRUE(maybe.has_value());
 
@@ -25,18 +25,18 @@ TEST(maybe, bind)
 {
     using namespace monads;
 
-    Maybe<float> const a = Just(2.0F);
-    Maybe<float> const b = Nothing;
+    Maybe<float> const a = just(2.0F);
+    Maybe<float> const b = nothing;
 
     auto safe_reciprocal = [](float denominator) -> Maybe<float>
     {
         if (denominator == 0)
         {
-            return Nothing;
+            return nothing;
         }
         else
         {
-            return Just(1.0F / denominator);
+            return just(1.0F / denominator);
         }
     };
 
