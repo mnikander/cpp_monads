@@ -1,5 +1,12 @@
 # Monads in C++
 
+Some common monads are easy to implement in C++.
+
+Note that the implementations for 'Maybe' and 'Result' in this repository do _not_ strictly encapsulate the values.
+It is possible to check if there is a value in the Maybe, and unwrap it manually.
+Strictly speaking, this should not be allowed, and instead 'bind' or function lifting should be used to raise all functions into the monadic context.
+Since this is often non-trivial in C++, i.e. the possibility to manually unwrap the values has been left open.
+
 ## Getting started
 
 1. Install dependencies
